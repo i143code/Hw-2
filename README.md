@@ -23,5 +23,5 @@
 
 
 <span style="color: green"> Delete ( find Id from get request) </span>
-![image](https://github.com/i143code/Hw-2/blob/master/Images/Screen%20Shot%202016-11-03%20at%203.30.16%20PM.png)
+![image](https://github.com/i143code/Hw-2/blob/master/Images/Screen%20Shot%202016-11-03%20at%204.14.15%20PM.png)
 <span style="color: green"> -------------------------------------------------------------------------------- </span>
