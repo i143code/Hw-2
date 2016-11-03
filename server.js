@@ -104,7 +104,6 @@ app.delete("/contacts/:id", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to delete contact");
     } else {
-      handleError(res, err.message, "Delete Contects");
       res.status(204).end();
     }
   });
