@@ -9,7 +9,7 @@ var CONTACTS_COLLECTION = "contacts";
 var app = express();
 app.use(bodyParser.json());
 
-// Create a database variable outside of the database connection callback to reuse the connection pool in your app.
+// Create a database variable outside of the database
 var db;
 
 // Connect to the database before starting the application server.
@@ -19,7 +19,6 @@ mongodb.MongoClient.connect("mongodb://ashish:ashish@ds143717.mlab.com:43717/mul
     process.exit(1);
   }
 
-  // Save database object from the callback for reuse.
   db = database;
   console.log("Database connection ready");
 
@@ -30,18 +29,17 @@ mongodb.MongoClient.connect("mongodb://ashish:ashish@ds143717.mlab.com:43717/mul
   });
 });
 
-// CONTACTS API ROUTES BELOW
-
-// Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": message});
 }
 
-/*  "/contacts"
- *    GET: finds all contacts
- *    POST: creates a new contact
- */
+//home routes
+
+app.get('/',function(req,res){
+ res.send("Welcome to Rest API. Please naviagte to /contacts routes")
+
+})
 
 app.get("/contacts", function(req, res) {
   db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
@@ -69,12 +67,6 @@ app.post("/contacts", function(req, res) {
     }
   });
 });
-
-/*  "/contacts/:id"
- *    GET: find contact by id
- *    PUT: update contact by id
- *    DELETE: deletes contact by id
- */
 
 app.get("/contacts/:id", function(req, res) {
   db.collection(CONTACTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
