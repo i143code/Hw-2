@@ -48,6 +48,7 @@ app.get("/contacts", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
     } else {
+       message: 'Welcome to the Ashish api'
       res.status(200).json(docs);
     }
   });
