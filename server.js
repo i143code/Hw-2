@@ -48,9 +48,7 @@ app.get("/contacts", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
     } else {
-
       res.status(200).json(docs);
-      res.render("Contacts Succfully created");
     }
   });
 });
@@ -67,9 +65,7 @@ app.post("/contacts", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to create new contact.");
     } else {
-      res.render("Contacts Succfully created");
       res.status(201).json(doc.ops[0]);
-      res.render("Contacts Succfully created");
     }
   });
 });
@@ -86,7 +82,6 @@ app.get("/contacts/:id", function(req, res) {
       handleError(res, err.message, "Failed to get contact");
     } else {
       res.status(200).json(doc);
-      res.render("Contacts Succfully created");
     }
   });
 });
