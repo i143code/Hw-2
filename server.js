@@ -37,7 +37,7 @@ function handleError(res, reason, message, code) {
 //home routes
 
 app.get('/',function(req,res){
- res.send("Welcome to Rest API. Please naviagte to /contacts routes")
+ res.send("Welcome to Rest API by Ashish Ranjan. Please naviagte to  https://pacific-inlet-58514.herokuapp.com/contacts")
 
 })
 
