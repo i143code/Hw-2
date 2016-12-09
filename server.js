@@ -3,12 +3,18 @@ var path = require("path");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
+var xml2js = require ('xml2js')
+var fs = require ('fs')
+var parser = new xml2js.Parser();
 
 var CONTACTS_COLLECTION = "contacts";
 
+
 var app = express();
 app.use(bodyParser.json());
-
+app.use(express.static(__dirname + "/static"));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 // Create a database variable outside of the database
 var db;
 
@@ -77,6 +83,44 @@ app.get("/contacts/:id", function(req, res) {
     }
   });
 });
+
+
+app.get('/api/rsdl1',function(req,res){
+//   fs.readFile(__dirname + '/RSDL.xml', 'utf8', function(err, data) {
+//     if (!err) {
+//         // res.status(200).json(data);
+//         res.send(__dirname + '/RSDL.xml')
+//     }
+// });
+res.sendfile(__dirname + '/RSDL.xml')
+})
+
+
+//adding wsdl
+app.get("/api/rsdl",function(req,res){
+  var returnJSONResults = function(baseName, queryName) {
+     var XMLPath = "RSDL.xml";
+     var rawJSON = loadXMLDoc(XMLPath);
+    function loadXMLDoc(filePath) {
+        var fs = require('fs');
+        var xml2js = require('xml2js');
+        var json;
+        try {
+            var fileData = fs.readFileSync(filePath, 'ascii');
+
+            var parser = new xml2js.Parser();
+            parser.parseString(fileData.substring(0, fileData.length), function (err, result) {
+            json = JSON.stringify(result);
+            res.status(200).json(JSON.stringify(result));
+        });
+
+        res.status(200).json("File '" + filePath + "/ was successfully read.\n");
+        res.status(200).json
+        return json;
+    } catch (ex) {console.log(ex)}
+ }
+}();
+})
 
 app.put("/contacts/:id", function(req, res) {
   var updateDoc = req.body;

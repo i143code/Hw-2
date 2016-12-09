@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rsdl href="/api?rsdl" rel="rsdl">
+    <description>This is a Simple Application made using MEAN statck technologies.It helps the  user perform CRUD operation that is Create, Read,Update,Delete.
+   </description>
+   <version major="1" minor="0" build="0" revision="0"/>
+   <links>
+     <link href="/contact">
+         <request>
+            <http_method>GET</http_method>
+         </request>
+         <response>
+                <type>JSON</type>
+         </response>
+      </link>
+      <link href="/contact">
+         <request>
+            <http_method>POST</http_method>
+         </request>
+         <response>
+            <type>JSON</type>
+         </response>
+      </link>
+      <link href="/contact/:id">
+         <request>
+            <http_method>PUT</http_method>
+         </request>
+         <response>
+            <type>JSON</type>
+         </response>
+      </link>
+      <link href="/contact/:id">
+         <request>
+            <http_method>UPDATE</http_method>
+         </request>
+         <response>
+            <type>JSON</type>
+         </response>
+      </link>
+    </links>
+</rsdl>
